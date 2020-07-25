@@ -27,6 +27,9 @@ else
 fi
 echo "All dependencies found!"
 
+# Get name of the file
+NAME="$(cut -d'.' -f1 <<< $1)"
+
 # Transform mov into pngs using ffpeg
 echo "Creating pngs..."
 mkdir ./pngs
@@ -40,11 +43,12 @@ sips -s format gif ./pngs/*.png --out ./gifs > /dev/null 2>&1
 # Assemble gifs into one
 echo "Merging gifs..."
 cd gifs
-gifsicle --optimize=3 --delay=10 --loopcount *.gif > animation.gif
+gifsicle --optimize=3 --delay=10 --loopcount *.gif > $NAME.gif
 
 # Move gif to current directory and remove temporal files
 echo "Removing temporal files..."
-mv animation.gif ../
+mv $NAME.gif ../
 cd ..
 rm -rf ./pngs
 rm -rf ./gifs
+rm $1
