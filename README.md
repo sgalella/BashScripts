@@ -8,3 +8,10 @@ Collection of different bash scripts:
 - _png_to_icns_: Creates a `icns` file out of an image in `png` format.
 
 
+
+## Dependencies
+
+- FFmpeg
+- sips
+- Gifsicle
+- ImageMagick
