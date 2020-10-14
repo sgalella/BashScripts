@@ -23,7 +23,8 @@ else
 	echo "sips not found!"
 	exit 1
 fi
-#gifsicle
+
+# Gifsicle
 if command -v gifsicle > /dev/null 2>&1
 then
 	echo "gisicle found!"

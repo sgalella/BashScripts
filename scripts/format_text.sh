@@ -13,7 +13,7 @@ fi
 # Add additional newline at the end (for reading purposes)
 echo "" >> $IN
 
-# Append newline to ouput file
+# Append newline to output file
 s=""
 while IFS= read -r  line 
 do

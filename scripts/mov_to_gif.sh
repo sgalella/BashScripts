@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check dependencies are installed
-# ffmpeg
+# FFmpeg
 if command -v ffmpeg > /dev/null 2>&1
 then
 	echo "fmmpeg found!"
@@ -9,6 +9,7 @@ else
 	echo "ffmpeg not found!"
 	exit 1
 fi
+
 # sips
 if command -v sips > /dev/null 2>&1
 then
@@ -17,7 +18,8 @@ else
 	echo "sips not found!"
 	exit 1
 fi
-#gifsicle
+
+# Gifsicle
 if command -v gifsicle > /dev/null 2>&1
 then
 	echo "gisicle found!"
