@@ -1,4 +1,4 @@
-# BashScripts
+# Bash Scripts
 Collection of different bash scripts:
 
 - _app_maker_: Creates an application folder for macOS.
@@ -15,3 +15,15 @@ Collection of different bash scripts:
 - sips
 - Gifsicle
 - ImageMagick
+
+
+
+## Usage
+
+Run the desired script as:
+
+```bash
+./script path_to_file
+```
+
+`path_to_file` denotes the location of the file to be converted, in case the chosen scripts needs one.
