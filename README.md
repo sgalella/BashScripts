@@ -27,3 +27,8 @@ Run the desired script as:
 ```
 
 `path_to_file` denotes the location of the file to be converted, in case the chosen scripts needs one.
+
+You can give permissions to the files using the command:
+```bash
+chmod 755 path_to_file
+```
