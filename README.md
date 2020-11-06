@@ -11,10 +11,10 @@ Collection of different bash scripts:
 
 ## Dependencies
 
-- FFmpeg
-- sips
-- Gifsicle
-- ImageMagick
+- [FFmpeg](https://ffmpeg.org)
+- [sips](https://www.lcdf.org/gifsicle/)
+- [Gifsicle](https://ss64.com/osx/sips.html)
+- [ImageMagick](https://imagemagick.org/index.php)
 
 
 
