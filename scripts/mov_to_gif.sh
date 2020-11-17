@@ -53,4 +53,3 @@ mv $NAME.gif ../
 cd ..
 rm -rf ./pngs
 rm -rf ./gifs
-rm $1
