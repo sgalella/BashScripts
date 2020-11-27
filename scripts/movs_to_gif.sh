@@ -1,36 +1,35 @@
 #!/bin/bash
 
 # Check dependencies are installed
-printf "Checking dependencies...\n"
+printf "\e[1;32m%s\e[m\n" "Converting mov videos to gif"
 
 # FFmpeg
 if command -v ffmpeg > /dev/null 2>&1
 then
-	printf "fmmpeg found!\n"
+	printf "\e[0;32m%s\e[m\n" "fmmpeg found!"
 else
-	printf "ffmpeg not found!\n"
+	printf "\e[0;31m%s\e[m\n" "ffmpeg not found!"
 	exit 1
 fi
 
 # sips
 if command -v sips > /dev/null 2>&1
 then
-	printf "sips found!\n"
+	printf "\e[0;32m%s\e[m\n" "sips found!"
 else
-	printf "sips not found!\n"
+	printf "\e[0;31m%s\e[m\n" "sips not found!"
 	exit 1
 fi
 
 # Gifsicle
 if command -v gifsicle > /dev/null 2>&1
 then
-	printf "gisicle found!\n"
+	printf "\e[0;32m%s\e[m\n" "gisicle found!"
 else
-	printf "gisicle not found!\n"
+	printf "\e[0;31m%s\e[m\n" "gisicle not found!"
 	exit 1
 fi
 
-printf "All dependencies found!\n\n"
 
 # Define function to convert each mov to gif
 if [ -d "./pngs" ]; then
@@ -57,9 +56,8 @@ mov_to_gif() {
 
 # Convert all .mov into .gif
 for filename in *.mov; do
-    printf "Processing ${filename}\n"
+    printf "Processing ${filename}...\n"
     mov_to_gif ${filename}
-    printf "Conversion of ${filename} completed!\n\n"
 done
 
 if [ $# -eq 0 ]; then
@@ -74,7 +72,6 @@ if [ -f $gifname ]; then
 fi
 
 gifsicle *.gif > $gifname
-
 
 printf "Merged gifs saved as ${gifname}\n"
 

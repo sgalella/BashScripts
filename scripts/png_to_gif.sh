@@ -1,16 +1,18 @@
 #!/bin/bash
 
 # Check if arguments given
+printf "\e[1;32m%s\e[m\n" "Converting png images to gif"
+
 # Images folder
 if [ -z "$1" ]
 then
-	echo -e "\033[0;31mImages directory not provided! Run script as ./png_to_gif.sh image_dir delay\033[0m"
+	printf "\e[0;31m%s\e[m\n" "Images directory not provided! Run script as ./png_to_gif.sh image_dir delay"
 	exit 1
 fi
 # Gif delay
 if [ -z "$2" ]
 then
-	echo -e "\033[0;31mGif delay not provided! Run script as ./png_to_gif.sh image_dir delay\033[0m"
+	printf "\e[0;31m%s\e[m\n" "Gif delay not provided! Run script as ./png_to_gif.sh image_dir delay"
 	exit 1
 fi
 
@@ -18,33 +20,33 @@ fi
 # sips
 if command -v sips > /dev/null 2>&1
 then
-	echo "sips found!"
+	printf "\e[0;32m%s\e[m\n" "sips found!"
 else
-	echo "sips not found!"
+	printf "\e[0;31m%s\e[m\n" "sips not found!"
 	exit 1
 fi
 
 # Gifsicle
 if command -v gifsicle > /dev/null 2>&1
 then
-	echo "gisicle found!"
+	printf "\e[0;32m%s\e[m\n" "gisicle found!"
 else
-	echo "gisicle not found!"
+	printf "\e[0;31m%s\e[m\n" "gisicle not found!"
 	exit 1
 fi
-echo "All dependencies found!"
+printf "\e[0;32m%s\e[m\n" "All dependencies found!"
 
 # Transform pngs into individual gif files
-echo "Creating gifs..."
+printf "Creating gifs...\n"
 mkdir ./gifs
 sips -s format gif $1/*.png --out ./gifs > /dev/null 2>&1
 
 # Assemble gifs into one
-echo "Merging gifs..."
+printf  "Merging gifs...\n"
 cd gifs
 gifsicle --optimize=3 --delay=$2 --loopcount *.gif > ../animation.gif
 
 # Move gif to current directory and remove temporal files
-echo "Removing temporal files..."
+printf "Removing temporal files...\n"
 cd ..
 rm -rf ./gifs

@@ -11,7 +11,7 @@ then
 fi
 
 # Add additional newline at the end (for reading purposes)
-echo "" >> $IN
+printf "\n" >> $IN
 
 # Append newline to output file
 s=""

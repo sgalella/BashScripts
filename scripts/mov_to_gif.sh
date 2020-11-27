@@ -1,54 +1,55 @@
 #!/bin/bash
 
 # Check dependencies are installed
+printf "\e[1;32m%s\e[m\n" "Converting mov video to gif"
+
 # FFmpeg
 if command -v ffmpeg > /dev/null 2>&1
 then
-	echo "fmmpeg found!"
+	printf "\e[0;32m%s\e[m\n" "fmmpeg found!"
 else
-	echo "ffmpeg not found!"
+	printf "\e[0;31m%s\e[m\n" "ffmpeg not found!"
 	exit 1
 fi
 
 # sips
 if command -v sips > /dev/null 2>&1
 then
-	echo "sips found!"
+	printf "\e[0;32m%s\e[m\n" "sips found!"
 else
-	echo "sips not found!"
+	printf "\e[0;31m%s\e[m\n" "sips not found!"
 	exit 1
 fi
 
 # Gifsicle
 if command -v gifsicle > /dev/null 2>&1
 then
-	echo "gisicle found!"
+	printf "\e[0;32m%s\e[m\n" "gisicle found!"
 else
-	echo "gisicle not found!"
+	printf "\e[0;31m%s\e[m\n" "gisicle not found!"
 	exit 1
 fi
-echo "All dependencies found!"
 
 # Get name of the file
 NAME="$(cut -d'.' -f1 <<< $1)"
 
 # Transform mov into pngs using ffpeg
-echo "Creating pngs..."
+printf "Creating pngs...\n"
 mkdir ./pngs
 ffmpeg -i $1 -r 10 ./pngs/out%04d.png > /dev/null 2>&1
 
 # Transform pngs into individual gif files
-echo "Creating gifs..."
+printf "Creating gifs...\n"
 mkdir ./gifs
 sips -s format gif ./pngs/*.png --out ./gifs > /dev/null 2>&1
 
 # Assemble gifs into one
-echo "Merging gifs..."
+printf "Merging gifs...\n"
 cd gifs
 gifsicle --optimize=3 --delay=10 --loopcount *.gif > $NAME.gif
 
 # Move gif to current directory and remove temporal files
-echo "Removing temporal files..."
+printf "Removing temporal files...\n"
 mv $NAME.gif ../
 cd ..
 rm -rf ./pngs

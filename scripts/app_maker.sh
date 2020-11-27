@@ -7,10 +7,10 @@ APPNAME="${NAME}.app"
 # Check if app already exists on directory
 if [ -d $APPNAME ]
 then
-	echo "App $APPNAME already exists ..."
+	printf "\e[0;31m%s\e[m\n" "App ${APPNAME} already exists..."
 	exit 1
 else
-	echo "Creating app ..."
+	printf "Creating app...\n"
 fi
 
 # Create package with folders
